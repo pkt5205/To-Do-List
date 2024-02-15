@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>My TO-DO List</title>
+<style>
+.container {
+			margin: 70px;
+			text-align: center;
+            border-radius: 5px;
+            background-color: #f2f2f2;
+            padding: 20px;
+        }
+.spn{
+	margin-left: 20px;
+	}		
+</style>
+</head>
+<body>
+<div class="container">
+	<div class="head">
+		<h2>MY TO-DO List</h2>
+	</div>
+	<div class="input">
+		<input type="text" id="Input" placeholder="type a new thing to do">
+		<input type="submit" onclick="append()" style="margin: 10px auto;" value="ADD">
+	</div>
+	<ul id="todo">
+	<li>GO FOR A WALK</li>
+	<li>GOTO OFFICE</li>
+	<li>VISIT DOCTOR</li>
+	<li>TAKE MEDICATION</li>
+	</ul>
+</div>
+<script type="text/javascript">
+
+var myList = document.getElementsByTagName("li");
+for(var i = 0 ; i < myList.length ; i++){
+	
+	var span = document.createElement("span");
+	var btn = document.createElement("button");
+	var btntxt = document.createTextNode("  REMOVE  ");
+	span.className = "spn";
+	btn.appendChild(btntxt);
+	span.appendChild(btn);
+	myList[i].appendChild(span);
+	
+	
+
+}
+
+function append(){
+	
+	var item = document.createElement("li");
+	var itemValue = document.getElementById("Input").value;
+	var txt = document.createTextNode(itemValue);
+	item.appendChild(txt);
+	if(itemValue === ""){
+		alert("please enter something");
+
+	}else{
+		document.getElementById("todo").appendChild(item);
+	}
+	var span = document.createElement("span");
+	var btn = document.createElement("button");
+	var btntxt = document.createTextNode("  REMOVE  ");
+	span.className = "spn";
+	btn.className = "btt";
+	btn.appendChild(btntxt);
+	span.appendChild(btn);
+	item.appendChild(span);
+
+	var spn = document.getElementsByClassName("spn");
+for(var i = 0 ; i < spn.length ; i++){
+	spn[i].addEventListener("click" , function() {
+		var div = this.parentElement;
+		div.style.display = "none";
+	})
+}
+
+	
+	
+}
+var spn = document.getElementsByClassName("spn");
+for(var i = 0 ; i < spn.length ; i++){
+	spn[i].addEventListener("click" , function() {
+		var div = this.parentElement;
+		div.style.display = "none";
+	})
+}
+
+
+
+
+
+</script>
+</body>
+</html>
